@@ -5,19 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import jakarta.validation.Valid;
 import sg.edu.nus.iss.vtpp5a_ssf_day15l.model.Person;
 import sg.edu.nus.iss.vtpp5a_ssf_day15l.repo.ListRepo;
 import sg.edu.nus.iss.vtpp5a_ssf_day15l.service.PersonService;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -67,5 +63,33 @@ public class PersonController {
         personSvc.delete("persons", valueToDelete);
         return "redirect:/persons";
     }
+
+    // Why issit telling me the @PathVariable annotation is redundant??
+   @GetMapping("/edit/{id}/{fullName}/{email}")
+   public String editPerson(@PathVariable(name = "id") String id,
+   @PathVariable(name = "fullName") String fullName,
+   @PathVariable(name = "email") String email, Model model) {
+
+        Person p = new Person(Integer.parseInt(id), fullName, email);
+        model.addAttribute("person", p);
+        return "editPerson";
+   }
+
+   @PostMapping("/edit/{id}/{fullName}/{email}")
+   public String handleEdit(@Valid Person person, BindingResult result,
+   @PathVariable(name = "id") String id,
+   @PathVariable(name = "fullName") String fullName,
+   @PathVariable(name = "email") String email, Model model) {
+       
+    if (result.hasErrors()){
+        return "editPerson";
+       }
+
+       String originalPerson = id + "," + fullName + "," + email;
+       personSvc.edit("persons", originalPerson, person.toString());
+       return "redirect:/persons";
+   }
+   
+   
     
 }

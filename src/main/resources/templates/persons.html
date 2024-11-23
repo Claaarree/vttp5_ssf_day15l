@@ -24,7 +24,7 @@
                 <a th:href="@{/persons/delete/{id}/{fullName}/{email}(id=${person.id},fullName=${person.fullName},email=${person.email})}">Delete</a>
             </td>
             <td>
-                <a th:href="@{/persons/edit}">Edit</a>
+                <a th:href="@{/persons/edit/{id}/{fullName}/{email}(id=${person.id},fullName=${person.fullName},email=${person.email})}">Edit</a>
             </td>
         </tbody>
     </table>

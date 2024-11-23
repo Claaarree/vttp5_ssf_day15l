@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Person</title>
+</head>
+<body>
+    <form method="post" th:action="@{/persons/edit/{id}/{fullName}/{email}(id=${person.id},fullName=${person.fullName},email=${person.email})}" th:object="${person}">
+        <div>
+            <label>ID: </label>
+            <input type="text" name="id" data-th-value="${person.id}" th:fields="*{id}">
+            <span name="id" th:if="${#fields.hasErrors('id')}" th:errors="*{id}"></span>
+        </div>
+        <div>
+            <label>Full Name: </label>
+            <input type="text" name="fullName" data-th-value="${person.fullName}" th:fields="*{fullName}">
+            <span name="fullName" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
+        </div>
+        <div>
+            <label>Email: </label>
+            <input type="text" name="email" data-th-value="${person.email}" th:fields="*{email}">
+            <span name="email" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <button type="submit">Submit</button>
+        <button type="reset">Reset</button>
+    </form>
+</body>
+</html>

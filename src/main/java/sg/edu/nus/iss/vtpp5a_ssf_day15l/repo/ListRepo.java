@@ -61,4 +61,9 @@ public class ListRepo {
 
         return isDeleted;
     }
+
+    public void editItem(String key, String valueToEdit, String newValue) {
+        Long indexToEdit = template.opsForList().indexOf(key, valueToEdit);
+        template.opsForList().set(key, indexToEdit, newValue);
+    }
 }

@@ -38,4 +38,8 @@ public class PersonService {
     public Boolean delete(String redisKey, String valueToDelete) {
         return personRepo.deleteItem(redisKey, valueToDelete);
     }
+
+    public void edit(String redisKey, String originalPerson, String editedPerson){
+        personRepo.editItem(redisKey, originalPerson, editedPerson);
+    }
 }
