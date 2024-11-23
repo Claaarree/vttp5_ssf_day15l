@@ -10,7 +10,7 @@ COPY mvnw .
 COPY mvnw.cmd .
 COPY pom.xml .
 
-RUN ./mvnw clean package -Dmaven.tests.skip=true
+RUN chmod a+x ./mvnw && ./mvnw clean package -Dmaven.tests.skip=true
 
 ENV SERVER_PORT=4000
 
