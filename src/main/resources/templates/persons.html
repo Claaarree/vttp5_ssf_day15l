@@ -17,11 +17,11 @@
             </tr>
         </thead>
         <tbody th:each="person : ${persons}">
-            <td th:utext="${person.id}"></td>
-            <td th:utext="${person.fullName}"></td>
-            <td th:utext="${person.email}"></td>
+            <td th:utext="${person.id}" name="id"></td>
+            <td th:utext="${person.fullName}" name="fullName"></td>
+            <td th:utext="${person.email}" name="email"></td>
             <td>
-                <a th:href="@{/persons/delete}">Delete</a>
+                <a th:href="@{/persons/delete/{id}/{fullName}/{email}(id=${person.id},fullName=${person.fullName},email=${person.email})}">Delete</a>
             </td>
             <td>
                 <a th:href="@{/persons/edit}">Edit</a>

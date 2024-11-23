@@ -8,14 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import jakarta.validation.Valid;
 import sg.edu.nus.iss.vtpp5a_ssf_day15l.model.Person;
 import sg.edu.nus.iss.vtpp5a_ssf_day15l.service.PersonService;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 
 
@@ -47,12 +45,12 @@ public class TestController {
         return "persons";
     }
 
-    @ResponseBody
-    @GetMapping("/delete")
-    public Boolean deletePerson() {
-        Person p = new Person(3, "Kenneth Pang", "kennethp@nus.edu.sg");
-        return personSvc.delete("persons", p);
-    }
+    // @ResponseBody
+    // @GetMapping("/delete")
+    // public Boolean deletePerson() {
+    //     Person p = new Person(3, "Kenneth Pang", "kennethp@nus.edu.sg");
+    //     return personSvc.delete("persons", p);
+    // }
     
     @GetMapping("/create")
     public String getPersonForm(Model model) {

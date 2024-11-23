@@ -52,12 +52,12 @@ public class ListRepo {
     public Boolean deleteItem(String key, String valueToDelete) {
         Boolean isDeleted = false;
 
-        Long iFound = template.opsForList().indexOf(key, valueToDelete);
+        // Long iFound = template.opsForList().indexOf(key, valueToDelete);
 
-        if (iFound >= 0) {
+        // if (iFound >= 0) {
             template.opsForList().remove(key, 1, valueToDelete);
             isDeleted = true;
-        }
+        // }
 
         return isDeleted;
     }
