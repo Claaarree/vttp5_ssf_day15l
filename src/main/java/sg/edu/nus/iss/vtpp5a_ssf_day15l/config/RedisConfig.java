@@ -39,6 +39,7 @@ public class RedisConfig {
 
         JedisClientConfiguration jcc = JedisClientConfiguration.builder().build();
         JedisConnectionFactory jcf = new JedisConnectionFactory(rsc, jcc);
+        jcf.afterPropertiesSet();
 
         return jcf;
     }
@@ -54,8 +55,8 @@ public class RedisConfig {
     }
     
     @Bean(Util.template02)
-    public RedisTemplate<String, String> redisObjectTemplate02(){
-        RedisTemplate<String, String> template = new RedisTemplate<>();
+    public RedisTemplate<String, Object> redisObjectTemplate02(){
+        RedisTemplate<String, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisConnectionFactory());
         template.setKeySerializer(new StringRedisSerializer());
         template.setValueSerializer(new StringRedisSerializer());

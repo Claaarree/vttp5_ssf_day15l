@@ -1,14 +1,14 @@
 package sg.edu.nus.iss.vtpp5a_ssf_day15l.model;
 
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 
 public class Person {
     
     // Put in necessary validations
-    @NotEmpty
+    @Min(value = 1, message = "Please enter your id!")
     private Integer id;
 
     @NotBlank(message = "Please enter your name!")
@@ -23,6 +23,9 @@ public class Person {
         this.id = id;
         this.fullName = fullName;
         this.email = email;
+    }
+
+    public Person() {
     }
 
     public Integer getId() {
